@@ -74,9 +74,7 @@ namespace SiteCapture
             if (capturesDataGridView.Rows.Count < 1)
                 return;
 
-            capturesDataGridView.ClearSelection();
-
-            //capturesDataGridView.Rows[0].Selected = false;  //first row is selected automatically
+            capturesDataGridView.Rows[0].Selected = false;  //first row is selected automatically
 
             if (selectionPosition == -1)  //if selectionPosition == -1 then move to the last record
             {
@@ -253,6 +251,7 @@ namespace SiteCapture
 
         private void MainForm_Load_1(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'sitecaputreDataSet.sites' table. You can move, or remove it, as needed.
             this.sitesTableAdapter.Fill(this.sitecaputreDataSet.sites);
         }
 

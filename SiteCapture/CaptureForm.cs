@@ -72,7 +72,12 @@ namespace SiteCapture
         void wb_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             Application.DoEvents();
-            Screenshot = new Bitmap(BrowserWidth, BrowserHeight);
+
+            //if the browser height is 0 get the height of the complete webpage
+            if (BrowserHeight <= 0)
+                webBrowser.Height = webBrowser.Document.Window.Size.Height;
+
+            Screenshot = new Bitmap(ImageWidth, ImageHeight);
             NativeMethods.GetImage(webBrowser.ActiveXInstance, Screenshot, Color.White);
             DocumentTitle = webBrowser.DocumentTitle;
 

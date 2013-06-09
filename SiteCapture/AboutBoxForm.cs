@@ -102,6 +102,8 @@ namespace SiteCapture
         private void AboutBoxForm_Load(object sender, EventArgs e)
         {
             titleLabel.Text = AssemblyProduct + " v" + AssemblyVersion;
+            //infoLabel.Text = String.Format("Version {0}", AssemblyVersion) + "\n\n" + 
+            //    AssemblyDescription + "\n\n" + AssemblyCompany + "\n\n" + AssemblyCopyright;
         }
 
         private void homepageLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

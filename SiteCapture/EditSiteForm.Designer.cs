@@ -61,6 +61,7 @@
             this.autoExpandCheckBox.TabIndex = 9;
             this.autoExpandCheckBox.Text = "Expand image to size of web page.";
             this.autoExpandCheckBox.UseVisualStyleBackColor = true;
+            this.autoExpandCheckBox.CheckedChanged += new System.EventHandler(this.autoExpandCheckBox_CheckedChanged);
             // 
             // label2
             // 
@@ -175,11 +176,12 @@
             // 
             // captureButton
             // 
+            this.captureButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.captureButton.Location = new System.Drawing.Point(192, 164);
             this.captureButton.Name = "captureButton";
             this.captureButton.Size = new System.Drawing.Size(75, 23);
             this.captureButton.TabIndex = 12;
-            this.captureButton.Text = "Capture";
+            this.captureButton.Text = "OK";
             this.captureButton.UseVisualStyleBackColor = true;
             this.captureButton.Click += new System.EventHandler(this.captureButton_Click);
             // 
@@ -190,7 +192,7 @@
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 23);
             this.closeButton.TabIndex = 13;
-            this.closeButton.Text = "Close";
+            this.closeButton.Text = "Cancel";
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 

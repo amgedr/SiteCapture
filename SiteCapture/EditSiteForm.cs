@@ -13,15 +13,17 @@ namespace SiteCapture
     public partial class EditSiteForm : Form
     {
         private WebBrowser webBrowser = new WebBrowser();
+        private Bitmap bitmap = null;
         private int browserWidth = 0;
         private int browserHeight = 0;
         private int imageWidth = 0;
         private int imageHeight = 0;
+        private string previousUrl;
 
         /// <summary>
         /// If true the calling form will refresh its data.
         /// </summary>
-        //public bool DoRefresh { get; set; }
+        public bool DoRefresh { get; set; }
 
         public EditSiteForm()
         {
@@ -35,7 +37,7 @@ namespace SiteCapture
 
         private void closeButton_Click(object sender, EventArgs e)
         {
-            //DoRefresh = false;
+            DoRefresh = false;
             Close();
         }
 
@@ -47,7 +49,6 @@ namespace SiteCapture
             {
                 errorProvider.SetError(urlTextBox, "Please enter a valid URL");
                 urlTextBox.Focus();
-                
                 return;
             }
 
@@ -79,7 +80,13 @@ namespace SiteCapture
                 return;
             }
 
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            if (autoExpandCheckBox.Checked || int.Parse(browserHeightTextBox.Text) <= 0)
+                browserHeightTextBox.Text = "0";
+        }
+
+        private void autoExpandCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            browserHeightTextBox.Enabled = !autoExpandCheckBox.Checked;
         }
     }
 }
