@@ -12,6 +12,8 @@ namespace SiteCapture
 {
     public partial class MainForm : Form
     {
+        private static FormWindowState currentWindowState = FormWindowState.Normal;
+
         public MainForm()
         {
             InitializeComponent();
@@ -214,13 +216,10 @@ namespace SiteCapture
             previewForm.ShowDialog(this);
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void settingsToolStripButton_Click(object sender, EventArgs e)
         {
             SettingsForm settingsForm = new SettingsForm();
-            if (settingsForm.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
-            {
-
-            }
+            settingsForm.ShowDialog();
         }
 
         private void MainForm_Resize(object sender, EventArgs e)
@@ -235,7 +234,8 @@ namespace SiteCapture
         private void restoreToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Visible = true;
-            this.WindowState = FormWindowState.Normal;
+            Application.DoEvents();
+            this.WindowState = currentWindowState;
             notifyIcon.Visible = false;
         }
 
@@ -247,12 +247,6 @@ namespace SiteCapture
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void MainForm_Load_1(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'sitecaputreDataSet.sites' table. You can move, or remove it, as needed.
-            this.sitesTableAdapter.Fill(this.sitecaputreDataSet.sites);
         }
 
         private void capturesDataGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -268,6 +262,18 @@ namespace SiteCapture
                     sitesBindingSource.Sort = "ImageWidth DESC";
                 else
                     sitesBindingSource.Sort = "ImageWidth ASC";
+        }
+
+        private void MainForm_SizeChanged(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.minimizeToTray &&
+                this.WindowState == FormWindowState.Minimized)
+            {
+                notifyIcon.Visible = true;
+                this.Visible = false;
+            }
+            else
+                currentWindowState = this.WindowState;
         }
     }
 }
