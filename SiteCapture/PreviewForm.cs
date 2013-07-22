@@ -52,6 +52,14 @@ namespace SiteCapture
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string folder = Properties.Settings.Default.defaultFolder;
+
+            if (folder != "")
+            {
+                saveFileDialog.RestoreDirectory = true;
+                saveFileDialog.InitialDirectory = folder;
+            }
+
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 ImageFormat imageFormat = ImageFormat.Jpeg;
