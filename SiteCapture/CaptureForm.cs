@@ -45,10 +45,12 @@ namespace SiteCapture
             webBrowser.Navigated += new WebBrowserNavigatedEventHandler(wb_Navigated);
             webBrowser.ProgressChanged += new WebBrowserProgressChangedEventHandler(wb_ProgressChanged);
 
-            Application.DoEvents();            
+            Application.DoEvents();
+            //System.Threading.Thread.Sleep(50);
             this.Cursor = Cursors.WaitCursor;
             webBrowser.Navigate(Url);
-            Application.DoEvents();            
+            Application.DoEvents();
+            //System.Threading.Thread.Sleep(1000);
         }
 
         void wb_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
@@ -73,7 +75,7 @@ namespace SiteCapture
 
             //if the browser height is 0 get the height of the complete webpage
             if (BrowserHeight <= 0)
-                webBrowser.Height = ImageHeight = webBrowser.Document.Window.Size.Height;
+                webBrowser.Height = webBrowser.Document.Window.Size.Height;
 
             Screenshot = new Bitmap(ImageWidth, ImageHeight);
             NativeMethods.GetImage(webBrowser.ActiveXInstance, Screenshot, Color.White);

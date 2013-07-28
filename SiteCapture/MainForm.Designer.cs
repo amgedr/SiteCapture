@@ -30,15 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.restoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sysTrayContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.websitesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.aboutToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.settingsToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteAllURLsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripButton = new System.Windows.Forms.ToolStripSplitButton();
@@ -46,6 +46,9 @@
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.capturesDataGridView = new System.Windows.Forms.DataGridView();
+            this.sitesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sitecaputreDataSet = new SiteCapture.sitecaptureDataSet();
+            this.sitesTableAdapter = new SiteCapture.sitecaptureDataSetTableAdapters.sitesTableAdapter();
             this.Url = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrowserWidth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrowserHeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,9 +59,6 @@
             this.Captured = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UrlId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.captureButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.sitesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sitecaputreDataSet = new SiteCapture.sitecaptureDataSet();
-            this.sitesTableAdapter = new SiteCapture.sitecaptureDataSetTableAdapters.sitesTableAdapter();
             this.sysTrayContextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.websitesBindingSource)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -72,7 +72,6 @@
             this.restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
             this.restoreToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.restoreToolStripMenuItem.Text = "&Restore";
-            this.restoreToolStripMenuItem.Click += new System.EventHandler(this.restoreToolStripMenuItem_Click);
             // 
             // sysTrayContextMenu
             // 
@@ -87,14 +86,12 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // notifyIcon
             // 
             this.notifyIcon.ContextMenuStrip = this.sysTrayContextMenu;
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "SiteCapture";
-            this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
             // 
             // websitesBindingSource
             // 
@@ -109,14 +106,14 @@
             this.aboutToolStripButton.Text = "About";
             this.aboutToolStripButton.Click += new System.EventHandler(this.aboutToolStripButton_Click);
             // 
-            // settingsToolStripButton
+            // toolStripButton1
             // 
-            this.settingsToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("settingsToolStripButton.Image")));
-            this.settingsToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.settingsToolStripButton.Name = "settingsToolStripButton";
-            this.settingsToolStripButton.Size = new System.Drawing.Size(69, 22);
-            this.settingsToolStripButton.Text = "Settings";
-            this.settingsToolStripButton.Click += new System.EventHandler(this.settingsToolStripButton_Click);
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(69, 22);
+            this.toolStripButton1.Text = "Settings";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripSeparator1
             // 
@@ -166,7 +163,7 @@
             this.editToolStripButton,
             this.deleteToolStripButton,
             this.toolStripSeparator1,
-            this.settingsToolStripButton,
+            this.toolStripButton1,
             this.aboutToolStripButton});
             this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -180,17 +177,17 @@
             this.capturesDataGridView.AllowUserToAddRows = false;
             this.capturesDataGridView.AllowUserToDeleteRows = false;
             this.capturesDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            this.capturesDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.capturesDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.capturesDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.capturesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.capturesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.capturesDataGridView.ColumnHeadersHeight = 26;
             this.capturesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.capturesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -216,6 +213,20 @@
             this.capturesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.capturesDataGridView_CellClick);
             this.capturesDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.capturesDataGridView_CellFormatting);
             this.capturesDataGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.capturesDataGridView_ColumnHeaderMouseClick);
+            // 
+            // sitesBindingSource
+            // 
+            this.sitesBindingSource.DataMember = "sites";
+            this.sitesBindingSource.DataSource = this.sitecaputreDataSet;
+            // 
+            // sitecaputreDataSet
+            // 
+            this.sitecaputreDataSet.DataSetName = "sitecaputreDataSet";
+            this.sitecaputreDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // sitesTableAdapter
+            // 
+            this.sitesTableAdapter.ClearBeforeFill = true;
             // 
             // Url
             // 
@@ -301,20 +312,6 @@
             this.captureButtonColumn.ToolTipText = "Recapture this URL";
             this.captureButtonColumn.Width = 30;
             // 
-            // sitesBindingSource
-            // 
-            this.sitesBindingSource.DataMember = "sites";
-            this.sitesBindingSource.DataSource = this.sitecaputreDataSet;
-            // 
-            // sitecaputreDataSet
-            // 
-            this.sitecaputreDataSet.DataSetName = "sitecaputreDataSet";
-            this.sitecaputreDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // sitesTableAdapter
-            // 
-            this.sitesTableAdapter.ClearBeforeFill = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,8 +322,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "SiteCapture";
-            this.Load += new System.EventHandler(this.MainForm_Load);
-            this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
+            this.Load += new System.EventHandler(this.MainForm_Load_1);
             this.sysTrayContextMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.websitesBindingSource)).EndInit();
             this.toolStrip1.ResumeLayout(false);
@@ -347,7 +343,7 @@
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.BindingSource websitesBindingSource;
         private System.Windows.Forms.ToolStripButton aboutToolStripButton;
-        private System.Windows.Forms.ToolStripButton settingsToolStripButton;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem deleteAllURLsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSplitButton deleteToolStripButton;

@@ -176,6 +176,7 @@
             // 
             // captureButton
             // 
+            this.captureButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.captureButton.Location = new System.Drawing.Point(192, 164);
             this.captureButton.Name = "captureButton";
             this.captureButton.Size = new System.Drawing.Size(75, 23);

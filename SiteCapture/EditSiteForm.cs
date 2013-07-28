@@ -80,19 +80,13 @@ namespace SiteCapture
                 return;
             }
 
-            if (autoExpandCheckBox.Checked)
-            {
+            if (autoExpandCheckBox.Checked || int.Parse(browserHeightTextBox.Text) <= 0)
                 browserHeightTextBox.Text = "0";
-                imageHeightTextBox.Text = "0";
-            }
-
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
         private void autoExpandCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             browserHeightTextBox.Enabled = !autoExpandCheckBox.Checked;
-            imageHeightTextBox.Enabled = !autoExpandCheckBox.Checked;
         }
     }
 }
