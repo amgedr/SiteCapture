@@ -42,7 +42,7 @@
             // 
             // browseFoldersButton
             // 
-            this.browseFoldersButton.Location = new System.Drawing.Point(210, 19);
+            this.browseFoldersButton.Location = new System.Drawing.Point(217, 19);
             this.browseFoldersButton.Name = "browseFoldersButton";
             this.browseFoldersButton.Size = new System.Drawing.Size(75, 23);
             this.browseFoldersButton.TabIndex = 11;
@@ -64,7 +64,7 @@
             // 
             this.defaultFolderTextBox.Location = new System.Drawing.Point(9, 21);
             this.defaultFolderTextBox.Name = "defaultFolderTextBox";
-            this.defaultFolderTextBox.Size = new System.Drawing.Size(195, 20);
+            this.defaultFolderTextBox.Size = new System.Drawing.Size(202, 20);
             this.defaultFolderTextBox.TabIndex = 10;
             // 
             // label1
@@ -102,7 +102,7 @@
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(210, 170);
+            this.cancelButton.Location = new System.Drawing.Point(217, 164);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 17;
@@ -112,7 +112,7 @@
             // okButton
             // 
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.okButton.Location = new System.Drawing.Point(129, 170);
+            this.okButton.Location = new System.Drawing.Point(136, 164);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 16;
@@ -140,7 +140,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(290, 199);
+            this.ClientSize = new System.Drawing.Size(304, 199);
             this.Controls.Add(this.browseFoldersButton);
             this.Controls.Add(this.maximizePreviewCheckBox);
             this.Controls.Add(this.defaultFolderTextBox);
