@@ -45,10 +45,10 @@ namespace SiteCapture
             webBrowser.Navigated += new WebBrowserNavigatedEventHandler(wb_Navigated);
             webBrowser.ProgressChanged += new WebBrowserProgressChangedEventHandler(wb_ProgressChanged);
 
-            Application.DoEvents();            
+            Application.DoEvents();
             this.Cursor = Cursors.WaitCursor;
             webBrowser.Navigate(new Uri(Url)); //using the Uri overload seams to work better
-            Application.DoEvents();            
+            Application.DoEvents();
         }
 
         void wb_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
@@ -69,7 +69,14 @@ namespace SiteCapture
 
         void wb_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            Application.DoEvents();
+            //this event executes more than once. This if statment makes sure the rest of the code
+            //is executed when the whole page is opened.
+            if (e.Url.AbsolutePath != webBrowser.Url.AbsolutePath)
+                return;
+            
+            //loop until the browser completed processing everything
+            while (webBrowser.IsBusy == true && webBrowser.ReadyState != WebBrowserReadyState.Complete)
+                Application.DoEvents();
 
             //if the browser height is 0 get the height of the complete webpage
             if (BrowserHeight <= 0)
