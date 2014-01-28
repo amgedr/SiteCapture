@@ -196,7 +196,8 @@ namespace SiteCapture
                 (int)currentRow.Cells["ImageWidth"].Value,
                 (int)currentRow.Cells["ImageHeight"].Value);
 
-            if (captureForm.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+            if (captureForm.ShowDialog(this) == System.Windows.Forms.DialogResult.OK
+                && captureForm.CancelProcess == false)
             {
                 SaveToDB((long)currentRow.Cells["UrlId"].Value,
                     currentRow.Cells["Url"].Value.ToString(),
@@ -206,21 +207,21 @@ namespace SiteCapture
                     (int)currentRow.Cells["ImageHeight"].Value);
 
                 RefreshGrid(currentRow.Index);
-            }
 
-            if (Properties.Settings.Default.displayPreviewWindow)
-            {
-                PreviewForm previewForm = new PreviewForm(captureForm.Screenshot, captureForm.DocumentTitle);
+                if (Properties.Settings.Default.displayPreviewWindow)
+                {
+                    PreviewForm previewForm = new PreviewForm(captureForm.Screenshot, captureForm.DocumentTitle);
 
-                if (Properties.Settings.Default.maximizePreviewWindow == true)
-                    previewForm.WindowState = FormWindowState.Maximized;
+                    if (Properties.Settings.Default.maximizePreviewWindow == true)
+                        previewForm.WindowState = FormWindowState.Maximized;
 
-                previewForm.ShowDialog(this);
-            }
+                    previewForm.ShowDialog(this);
+                }
 
-            if (Properties.Settings.Default.autoSave && Properties.Settings.Default.defaultFolder != "")
-            {
-                MessageBox.Show(Properties.Settings.Default.defaultFolder + @"\" + captureForm.DocumentTitle);
+                if (Properties.Settings.Default.autoSave && Properties.Settings.Default.defaultFolder != "")
+                {
+                    MessageBox.Show(Properties.Settings.Default.defaultFolder + @"\" + captureForm.DocumentTitle);
+                }
             }
         }
 
@@ -282,6 +283,6 @@ namespace SiteCapture
             }
             else
                 currentWindowState = this.WindowState;
-        }
+        }       
     }
 }

@@ -13,12 +13,12 @@ namespace SiteCapture
     public partial class EditSiteForm : Form
     {
         private WebBrowser webBrowser = new WebBrowser();
-        private Bitmap bitmap = null;
+        //private Bitmap bitmap = null;
         private int browserWidth = 0;
         private int browserHeight = 0;
         private int imageWidth = 0;
         private int imageHeight = 0;
-        private string previousUrl;
+        //private string previousUrl;
 
         /// <summary>
         /// If true the calling form will refresh its data.

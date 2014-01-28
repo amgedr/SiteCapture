@@ -22,6 +22,11 @@ namespace SiteCapture
         public Bitmap Screenshot = null;
         public string DocumentTitle = "";
 
+        /// <summary>
+        /// if set to true the capturing process will be cancelled
+        /// </summary>
+        public bool CancelProcess { get; private set; }
+
         public CaptureForm(string url, int browserWidth, int browserHeight, int imageWidth, int imageHeight)
         {
             InitializeComponent();
@@ -76,7 +81,12 @@ namespace SiteCapture
             
             //loop until the browser completed processing everything
             while (webBrowser.IsBusy == true && webBrowser.ReadyState != WebBrowserReadyState.Complete)
+            {
                 Application.DoEvents();
+
+                if (CancelProcess)
+                    this.Close();
+            }
 
             //if the browser height is 0 get the height of the complete webpage
             if (BrowserHeight <= 0)
@@ -90,6 +100,11 @@ namespace SiteCapture
 
             this.Cursor = Cursors.Default;
             this.Close();
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            CancelProcess = true;
         }
     }
 }
