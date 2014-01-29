@@ -44,7 +44,7 @@
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(12, 33);
+            this.progressBar.Location = new System.Drawing.Point(13, 33);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(169, 18);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
@@ -54,7 +54,7 @@
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(52, 68);
+            this.cancelButton.Location = new System.Drawing.Point(53, 68);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 4;
@@ -67,7 +67,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(185, 110);
+            this.ClientSize = new System.Drawing.Size(194, 106);
             this.ControlBox = false;
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.label1);

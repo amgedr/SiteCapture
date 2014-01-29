@@ -74,6 +74,9 @@ namespace SiteCapture
 
         void wb_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
+            if (CancelProcess)
+                this.Close();
+
             //this event executes more than once. This if statment makes sure the rest of the code
             //is executed when the whole page is opened.
             if (e.Url.AbsolutePath != webBrowser.Url.AbsolutePath)
