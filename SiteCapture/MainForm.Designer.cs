@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.restoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sysTrayContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +59,9 @@
             this.sitesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sitecaputreDataSet = new SiteCapture.sitecaptureDataSet();
             this.sitesTableAdapter = new SiteCapture.sitecaptureDataSetTableAdapters.sitesTableAdapter();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.exportToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.exportSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.sysTrayContextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.websitesBindingSource)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -165,6 +168,8 @@
             this.newToolStripButton,
             this.editToolStripButton,
             this.deleteToolStripButton,
+            this.toolStripSeparator2,
+            this.exportToolStripButton,
             this.toolStripSeparator1,
             this.settingsToolStripButton,
             this.aboutToolStripButton});
@@ -180,17 +185,17 @@
             this.capturesDataGridView.AllowUserToAddRows = false;
             this.capturesDataGridView.AllowUserToDeleteRows = false;
             this.capturesDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            this.capturesDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.capturesDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.capturesDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.capturesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.capturesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.capturesDataGridView.ColumnHeadersHeight = 26;
             this.capturesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.capturesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -315,6 +320,27 @@
             // 
             this.sitesTableAdapter.ClearBeforeFill = true;
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // exportToolStripButton
+            // 
+            this.exportToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("exportToolStripButton.Image")));
+            this.exportToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.exportToolStripButton.Name = "exportToolStripButton";
+            this.exportToolStripButton.Size = new System.Drawing.Size(60, 22);
+            this.exportToolStripButton.Text = "Export";
+            this.exportToolStripButton.Click += new System.EventHandler(this.exportToolStripButton_Click);
+            // 
+            // exportSaveFileDialog
+            // 
+            this.exportSaveFileDialog.AddExtension = false;
+            this.exportSaveFileDialog.DefaultExt = "*.csv";
+            this.exportSaveFileDialog.Filter = "CSV files|*.csv|All files|*.*";
+            this.exportSaveFileDialog.Title = "Export URLs to a CSV File";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -368,5 +394,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Captured;
         private System.Windows.Forms.DataGridViewTextBoxColumn UrlId;
         private System.Windows.Forms.DataGridViewButtonColumn captureButtonColumn;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton exportToolStripButton;
+        private System.Windows.Forms.SaveFileDialog exportSaveFileDialog;
     }
 }

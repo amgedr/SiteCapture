@@ -95,7 +95,7 @@ namespace SiteCapture
         {
             EditSiteForm editSiteForm = new EditSiteForm();
 
-            if (editSiteForm.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+            if (editSiteForm.ShowDialog(this) == DialogResult.OK)
             {
                 SaveToDB(0, editSiteForm.urlTextBox.Text,
                     Convert.ToInt32(editSiteForm.browserWidthTextBox.Text),
@@ -196,7 +196,7 @@ namespace SiteCapture
                 (int)currentRow.Cells["ImageWidth"].Value,
                 (int)currentRow.Cells["ImageHeight"].Value);
 
-            if (captureForm.ShowDialog(this) == System.Windows.Forms.DialogResult.OK
+            if (captureForm.ShowDialog(this) == DialogResult.OK
                 && captureForm.CancelProcess == false)
             {
                 SaveToDB((long)currentRow.Cells["UrlId"].Value,
@@ -283,6 +283,25 @@ namespace SiteCapture
             }
             else
                 currentWindowState = this.WindowState;
-        }       
+        }
+
+        private void exportToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (exportSaveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                var sites = sitesTableAdapter.GetData();
+                StringBuilder lines = new StringBuilder();
+
+                foreach (var s in sites)
+                {
+                    lines.AppendLine(
+                        string.Format("\"{0}\", \"{1}\", \"{2}\", \"{3}\", \"{4}\", \"{5}\"",
+                            s.Url, s.BrowserWidth, s.BrowserHeight, s.ImageWidth, s.ImageHeight,
+                            s.Captured.ToString("yyyy-MM-dd H:mm:ss")));
+                }
+
+                System.IO.File.WriteAllText(exportSaveFileDialog.FileName, lines.ToString());
+            }
+        }
     }
 }
